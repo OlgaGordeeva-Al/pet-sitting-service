@@ -1,35 +1,81 @@
-@import './base.css';
+:root {
+  --primary-purple: #453C67;
+  --secondary-purple: #6D67E4;
+  --blue: #46C2CB;
+  --yellow: #F2F7A1;
+  --text-color-dark: rgb(32,33,36);
+  --color-white: rgb(232,234,237);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text-color-dark);
+  background: var(--color-white);
+  transition:
+    color 0.5s,
+    background-color 0.5s;
+  line-height: 1.6;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-
-  font-weight: normal;
+  display: grid;
+  grid-template-rows: 80px minmax(80vh, max-content) 1fr;
+  grid-template-areas: 
+    "header header header header"
+    "main main main main"
+    "footer footer footer footer";
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-}
+/* images ang other 
+  https://images.unsplash.com/photo-1415369629372-26f2fe60c467?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D cat sitter
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
+    https://images.unsplash.com/photo-1494947665470-20322015e3a8?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D dog walking
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+    https://plus.unsplash.com/premium_photo-1667675417001-c4e97f0bc531?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-}
+    https://images.unsplash.com/photo-1529933037705-0d537317ae7b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D cat
+
+    sitters images 
+
+    https://plus.unsplash.com/premium_photo-1664285640352-80f8d258d78b?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzQ5fHxwZXR8ZW58MHx8MHx8fDA%3D
+
+    https://plus.unsplash.com/premium_photo-1667727016410-0a19232ce2b7?q=80&w=2488&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+
+    https://images.unsplash.com/photo-1506738819717-ebda614c347c?q=80&w=2531&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+
+    https://images.unsplash.com/photo-1512984501745-db2433c19f60?q=80&w=2486&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D */
+
+    /* icons 
+
+    https://www.svgrepo.com/svg/518532/pet-first-aid 
+    
+    https://www.svgrepo.com/svg/287639/pet-dog
+
+    https://www.svgrepo.com/svg/408528/pet-food
+
+    https://www.svgrepo.com/svg/307280/dog-walker-person-walk-pet
+
+    https://www.svgrepo.com/svg/295870/dog-food-pet
+
+    https://www.svgrepo.com/svg/70286/pet-comb
+
+    
+    */
