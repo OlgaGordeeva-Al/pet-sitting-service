@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
   .footer {
     grid-area: footer;
     background-color: var(--primary-purple);

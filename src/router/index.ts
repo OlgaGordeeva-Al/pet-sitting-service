@@ -23,13 +23,13 @@ const router = createRouter({
       path: '/services',
       name: 'services',
       component: () => import('../views/ServicesView.vue'),
-      children: [
-        { 
-          path: '', 
-          name: 'servise', 
-          component: () => import('../views/Service.vue'),
-        }
-      ],
+      // children: [
+      //   { 
+      //     path: '', 
+      //     name: 'servise', 
+      //     component: () => import('../views/Service.vue'),
+      //   }
+      // ],
     },
     {
       path: '/reviews',
