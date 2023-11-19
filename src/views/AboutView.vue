@@ -1,9 +1,13 @@
+<script setup lang="ts">
+  import TextHeader from "../components/UI/TextHeader.vue"
+</script>
+
 <template>
   <div class="about">
-    <h1>This is main page</h1>
+    <TextHeader header="Передержка питомцев" />
   </div>
 </template>
 
-<style>
+<style scoped>
 
 </style>
