@@ -12,6 +12,7 @@ import { RouterLink } from 'vue-router'
       <div class="header-logo__text">PetBro</div>
     </div>
     <div class="header-nav">
+      <RouterLink class="header-nav__link" to="/">О нас</RouterLink>
       <RouterLink class="header-nav__link" to="/services">Наши услуги</RouterLink>
       <RouterLink class="header-nav__link" to="/sitters">Наши ситтеры</RouterLink>
       <RouterLink class="header-nav__link" to="/contscts">Наши контакты</RouterLink>
