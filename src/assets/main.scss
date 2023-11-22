@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Nunito';
+  src: local('Nunito'),
+  url(./fonts/Nunito-VariableFont_wght.ttf) 
+  format("truetype");
+}
+
 :root {
   --primary-purple: #453C67;
   --secondary-purple: #6D67E4;
@@ -5,6 +12,7 @@
   --yellow: #F2F7A1;
   --text-color-dark: rgb(32,33,36);
   --color-white: rgb(232,234,237);
+  font-family: Nunito;
 }
 
 body {
@@ -17,6 +25,7 @@ body {
     background-color 0.5s;
   line-height: 1.6;
   font-family:
+    Nunito,
     Inter,
     -apple-system,
     BlinkMacSystemFont,
