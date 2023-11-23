@@ -27,7 +27,7 @@
   border-radius: 30px;
   grid-template-columns: min-content max-content;
   padding: 10px 20px;
-  margin: 2rem 0;
+  margin: 2rem;
 
   &__svg-container {
     margin: auto;
@@ -44,6 +44,7 @@
   }
 
   &__text-description {
+    max-width: 70vw;
     margin-top: 5px;
   }
 
@@ -51,6 +52,7 @@
     font-size: 22px;
     font-weight: 600;
     margin-bottom: 0;
+    max-width: 70vw;
     color: var(--primary-purple)
   }
 
