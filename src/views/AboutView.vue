@@ -1,6 +1,15 @@
 <script setup lang="ts">
   import TextHeader from "../components/UI/TextHeader.vue"
   import ImageTextCard from "../components/UI/ImageTextCard.vue"
+  import SvgListItem from "@/components/UI/SvgListItem.vue";
+
+  const listArr = [
+    "Наши ситтеры проверены, обучены и обожают животных",
+    "Ваши любимцы не останутся без присмотра",
+    "Гуляем только на поводке, учитываем особенности каждого животного",
+    "Фото и видеоотчеты при каждом визите ситтера и с каждой прогулки",
+    "Мы предоставляем возможность круглосуточного видеонаблюдения за вашими питомцами"
+  ]
 </script>
 
 <template>
@@ -23,6 +32,9 @@
   </div>
   <div class="about-advantages main-block">
     <TextHeader class="about-advantages__header block-header" header="Почему именно мы?" />
+    <div class="about-advantages__list">
+      <SvgListItem v-for="(item, index) in listArr" svg="paw-3-svgrepo-com.svg" :index="index" :description="listArr[index]" />
+    </div>
   </div>
   <div class="about-how"></div>
 </template>
