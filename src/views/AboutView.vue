@@ -2,6 +2,7 @@
   import TextHeader from "../components/UI/TextHeader.vue"
   import ImageTextCard from "../components/UI/ImageTextCard.vue"
   import SvgListItem from "@/components/UI/SvgListItem.vue";
+  import ButtonGradient from "@/components/UI/ButtonGradient.vue";
 
   const listArr = [
     "Наши ситтеры проверены, обучены и обожают животных",
@@ -25,8 +26,9 @@
 <template>
   <div class="about-banner main-block">
     <div class="about-banner__text">
-      <TextHeader class="about-banner__header" header="Передержка, выгул, ситтинг для ваших питомцев" />
+      <TextHeader header="Передержка, выгул, ситтинг для ваших питомцев" />
       <p>Заботимся о ваших любимцах, как о своих 💜 </p>
+      <ButtonGradient class="about-banner__button" title="Оставить заявку" />
     </div>
     <div class="about-banner__image">
       <img src="undraw_passing_by_0un9.svg" alt="dog walking">

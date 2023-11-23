@@ -27,7 +27,7 @@
   border-radius: 30px;
   grid-template-columns: min-content max-content;
   padding: 10px 20px;
-  margin: 2rem;
+  margin: 2rem 0;
 
   &__svg-container {
     margin: auto;
