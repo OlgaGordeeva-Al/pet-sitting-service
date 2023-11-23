@@ -1,17 +1,17 @@
 <script setup lang="ts">
   defineProps<{
-    svg: string,
+    svg?: string,
     header?: string,
     description: string
-    style?: string,
     index: number
   }>()
 </script>
 
 <template>
   <div class="list-item">
-    <div :v-if="svg" class="list-item__svg-container">
-      <img :src="svg" :class="['list-item__svg', `list-item__svg-${index}`]" alt="card image">
+    <div class="list-item__svg-container">
+      <img v-if="svg" :src="svg" :class="['list-item__svg', `list-item__svg-${index}`]" alt="card image">
+      <p v-else class="list-item__number">{{ index + 1 }}</p>
     </div>
     <div class="list-item__text">
       <p :v-if="header" class="list-item__text-header">{{ header }}</p>
@@ -31,11 +31,16 @@
 
   &__svg-container {
     margin: auto;
-    padding-right: 10px;
+    padding-right: 15px;
   }
 
   &__svg {
     height: 40px;
+  }
+
+  &__number {
+    margin: auto;
+    font-size: 38px;
   }
 
   &__text-description {

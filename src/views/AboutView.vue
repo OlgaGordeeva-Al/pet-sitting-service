@@ -6,9 +6,19 @@
   const listArr = [
     "Наши ситтеры проверены, обучены и обожают животных",
     "Ваши любимцы не останутся без присмотра",
+    "Заключаем с вами договор, где прописаны все обязанности ситтера",
     "Гуляем только на поводке, учитываем особенности каждого животного",
     "Фото и видеоотчеты при каждом визите ситтера и с каждой прогулки",
     "Мы предоставляем возможность круглосуточного видеонаблюдения за вашими питомцами"
+  ]
+
+  const howWeWorkList = [
+    "Вы оставляете заявку на сайте",
+    "Выбираете ситтера из списка откликнувшехся ситтеров или выгульщиков",
+    "Заключаем договор, вы производите оплату за весь пакет услуг",
+    "В удобное для вас время ситтер приезжает к вам бесплатно, знакомится с вашим питомцем или питомцами",
+    "Передержка/ Выгул / Уход няни за питомцем",
+    "Заключительная встреча для возврата питомца, ключей и др."
   ]
 </script>
 
@@ -36,11 +46,17 @@
       <SvgListItem v-for="(item, index) in listArr" svg="paw-3-svgrepo-com.svg" :index="index" :description="listArr[index]" />
     </div>
   </div>
-  <div class="about-how"></div>
+  <div class="about-how main-block">
+    <TextHeader class="about-how__header block-header" header="Как мы работаем" />
+    <div class="about-how__list">
+      <SvgListItem v-for="(item, index) in howWeWorkList" class="about-how__list-item" :index="index" :description="howWeWorkList[index]" />
+    </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
   .main-block {
+    display: grid;
     margin: 2rem 4rem;
     margin-bottom: 6rem;
   }
@@ -71,9 +87,6 @@
   }
 
   .about-services {
-    display: grid;
-    grid-template-rows: max-content;
-
     &__cardblock {
       margin: 2rem 0;
       display: grid;
@@ -83,7 +96,10 @@
     }
   }
 
-  .about-advantages {
-    display: grid;
+  .about-how {
+    &__list-item {
+      background-color: #6d67e448;
+    }
+
   }
 </style>
