@@ -26,7 +26,7 @@
 <template>
   <div class="about-banner main-block">
     <div class="about-banner__text">
-      <TextHeader header="Передержка, выгул, ситтинг для ваших питомцев" />
+      <TextHeader class="about-banner__header" header="Передержка, выгул, ситтинг для ваших питомцев" />
       <p>Заботимся о ваших любимцах, как о своих 💜 </p>
       <ButtonGradient class="about-banner__button" title="Оставить заявку" />
     </div>

@@ -12,9 +12,19 @@ import Footer from "./components/Footer.vue"
   <Footer />
 </template>
 
-<style scoped>
+<style lang="scss">
   .main {
     grid-area: main;
     padding: 30px 50px;
+  }
+
+  a {
+    color: currentColor;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:visited {
+      color: currentColor;
+    }
   }
 </style>

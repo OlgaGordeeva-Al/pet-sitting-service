@@ -17,10 +17,9 @@
     color: var(--color-white);
     border-radius: 5px;
     background: radial-gradient(circle, var(--secondary-purple) 0%, var(--blue) 100%);
-    margin-top: 2rem;
+    margin-top: 40px;
 
     &:hover {
-      cursor: pointer;
       transform: scale(1.1);
     }
   }
