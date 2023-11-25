@@ -31,21 +31,21 @@
       <ButtonGradient class="about-banner__button" title="Оставить заявку" />
     </div>
     <div class="about-banner__image">
-      <img src="undraw_passing_by_0un9.svg" alt="dog walking">
+      <img src="src\assets\svg\undraw_passing_by_0un9.svg" alt="dog walking">
     </div>
   </div>
   <div class="about-services main-block">
     <TextHeader class="about-services__header block-header" header="Наши сервисы" />
     <div class="about-services__cardblock">
-      <ImageTextCard image-src="undraw_dog_walking_re_l61p.svg" header="Выгул собак" description="Выгуляем вашего питомца, если у вас не хватает времени" />
-      <ImageTextCard image-src="undraw_everyday_life_re_1lfb.svg" header="Передержка" description="Позаботимся о вашем питомце на нашей территории, пока вы в отъезде" />
-      <ImageTextCard image-src="undraw_friends_r511.svg" header="Няня для вашего питомца" description="Приходящая няня позаботится о ваших питомцах у вас дома, пока вы в отъезде" />
+      <ImageTextCard image-src="src\assets\svg\undraw_dog_walking_re_l61p.svg" header="Выгул собак" description="Выгуляем вашего питомца, если у вас не хватает времени" />
+      <ImageTextCard image-src="src\assets\svg\undraw_everyday_life_re_1lfb.svg" header="Передержка" description="Позаботимся о вашем питомце на нашей территории, пока вы в отъезде" />
+      <ImageTextCard image-src="src\assets\svg\undraw_friends_r511.svg" header="Няня для вашего питомца" description="Приходящая няня позаботится о ваших питомцах у вас дома, пока вы в отъезде" />
     </div>
   </div>
   <div class="about-advantages main-block">
     <TextHeader class="about-advantages__header block-header" header="Почему именно мы?" />
     <div class="about-advantages__list">
-      <SvgListItem v-for="(item, index) in listArr" svg="paw-3-svgrepo-com.svg" :index="index" :description="listArr[index]" />
+      <SvgListItem v-for="(item, index) in listArr" svg="src\assets\svg\paw-3-svgrepo-com.svg" :index="index" :description="listArr[index]" />
     </div>
   </div>
   <div class="about-how main-block">
@@ -56,7 +56,7 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .main-block {
     display: grid;
     margin: 2rem 4rem;
@@ -67,7 +67,9 @@
   .block-header {
     margin: auto;
   }
+</style>
 
+<style lang="scss" scoped>
   .about-banner {
     &__text {
       position: absolute;
