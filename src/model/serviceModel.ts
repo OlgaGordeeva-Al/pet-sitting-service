@@ -2,13 +2,13 @@ export const servicesData = [
   {
     name: "walking",
     header: "Выгул собак",
-    description: "С удовольствием выгуляем вашу собаку. Обязательно на поводке. Намордник надеваем на крупных собак",
+    description: "С удовольствием выгуляем вашу собаку. Обязательно на поводке. На крупных и агрессивных собак обязательно наведваем намордник",
     servicesList: [
       "Выгул вашей собаки",
       "Вычешем вашего питомца вне дома и соберем шерсть",
-      "Фото и видео отчет о прогулке"
+      "Пришлем фото- и видео-отчет о прогулке"
     ],
-    imgSrc: "https://plus.unsplash.com/premium_photo-1667675417001-c4e97f0bc531?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    imgSrc: "https://images.unsplash.com/photo-1560743641-3914f2c45636?q=80&w=1851&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     name: "sitting",
@@ -19,10 +19,10 @@ export const servicesData = [
       "Кормежка животного или нескольких животных",
       "Кормежка ваших рыбок, птичек, грызунов и прочих питомцев",
       "Уборка лотка вашего питомца",
-      "Поиграть с питомцем с его любимыми игрушками", 
+      "Поиграем с питомцем с его любимыми игрушками", 
       "Вычешем вашего питомца",
       "Выполним необходимые медецинские процедуры",
-      "Установка камеры наблюдения производится за дополнительную плату"
+      "Установим камеры наблюдения производится за дополнительную плату"
     ],
     imgSrc: "https://images.unsplash.com/photo-1529933037705-0d537317ae7b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
