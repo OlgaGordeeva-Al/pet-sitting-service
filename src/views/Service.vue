@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import TextHeader from '@/components/UI/TextHeader.vue';
 import ButtonSecondary from '@/components/UI/ButtonSecondary.vue';
-import { servicesData } from '../model/serviceModel.ts'
+import { servicesData } from '@/model/serviceModel.ts'
 
 import {useRoute} from "vue-router";
   const route = useRoute();
@@ -54,7 +54,12 @@ import {useRoute} from "vue-router";
       display: grid;
       padding: 20px 40px;
       box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-      background-color: #6d67e454;
+      background-image: linear-gradient(
+        to bottom,
+        #ffffffe9,
+        #fffffff6),
+        url(../assets/Images/pets-cats-dogs-seamless-pattern-doodle-style-with-cute-animals-toys_341076-451.avif);
+
 
       &__description {
         margin: 0;
