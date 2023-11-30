@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import TextHeader from '@/components/UI/TextHeader.vue';
 import ButtonSecondary from '@/components/UI/ButtonSecondary.vue';
-import { servicesData } from '@/model/serviceModel.ts'
+import { servicesData } from '@/model/serviceModel'
 
 import {useRoute} from "vue-router";
   const route = useRoute();
