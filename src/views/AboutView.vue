@@ -45,13 +45,13 @@
   <div class="about-advantages main-block">
     <TextHeader class="about-advantages__header block-header" header="Почему именно мы?" />
     <div class="about-advantages__list">
-      <SvgListItem v-for="(item, index) in listArr" svg="src\assets\svg\paw-3-svgrepo-com.svg" :index="index" :description="listArr[index]" />
+      <SvgListItem v-for="(item, index) in listArr" svg="src\assets\svg\paw-3-svgrepo-com.svg" :index="index" :description="listArr[index]" :key="index" />
     </div>
   </div>
   <div class="about-how main-block">
     <TextHeader class="about-how__header block-header" header="Как мы работаем" />
     <div class="about-how__list">
-      <SvgListItem v-for="(item, index) in howWeWorkList" class="about-how__list-item" :index="index" :description="howWeWorkList[index]" />
+      <SvgListItem v-for="(item, index) in howWeWorkList" class="about-how__list-item" :index="index" :description="howWeWorkList[index]" :key="howWeWorkList[index]" />
     </div>
   </div>
 </template>

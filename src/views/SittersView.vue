@@ -9,7 +9,7 @@ import TextHeader from "@/components/UI/TextHeader.vue";
   <div class="sitters main-block">
     <TextHeader class="sitters-header" header="Наши ситтеры" />
     <div class="sitters-block">
-      <div class="sitters-item" v-for="item in sitters">
+      <div class="sitters-item" v-for="item in sitters" :key="item.imageSrc">
         <SittersCard 
           :name="item.name" 
           :about="item.about" 

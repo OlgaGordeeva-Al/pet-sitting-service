@@ -28,7 +28,7 @@ import {useRoute} from "vue-router";
       <p class="service-text__description">{{ description }}</p>
       <ul class="service-list">
         <p class="service-list__header">Что входит в услугу:</p>
-        <li v-for="item in servicesList" class="service-list__item">
+        <li v-for="item in servicesList" class="service-list__item" :key="item">
           {{ item }}
         </li>
       </ul>
