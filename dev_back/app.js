@@ -6,9 +6,9 @@ const indexRouter = require("./routes/index");
 const app = express();
 const port = 3000;
 
-app.use("/", indexRouter);
-app.use("/sitters", sittersRouter);
-app.use("/services", servicesRouter);
+app.use("/api", indexRouter);
+app.use("/api/sitters", sittersRouter);
+app.use("/api/services", servicesRouter);
 
 app.listen(port, () => {
   console.log('Server was started on PORT:3000')
