@@ -1,6 +1,6 @@
 
 <script lang="ts" setup>
-  import TextHeader from '@/components/UI/TextHeader.vue';
+  import TextHeader from "../components/UI/TextHeader.vue";
 </script>
 <template>
   <div class="not-found main-block">

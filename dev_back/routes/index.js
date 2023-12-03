@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const { listArr, howWeWorkList } = require('../models/mainModel');
+const { ourAdvantages, howWeWorkList } = require('../models/mainModel');
 
 
 router.get('/', (req, res) => {
-  res.send({ listArr, howWeWorkList })
+  res.send({ ourAdvantages, howWeWorkList })
 });
 
 module.exports = router;

@@ -10,7 +10,7 @@
       <RouterLink class="header-nav__link" to="/">О нас</RouterLink>
       <RouterLink class="header-nav__link" to="/services">Наши услуги</RouterLink>
       <RouterLink class="header-nav__link" to="/sitters">Наши ситтеры</RouterLink>
-      <RouterLink class="header-nav__link" to="/contscts">Наши контакты</RouterLink>
+      <RouterLink class="header-nav__link" to="/contacts">Наши контакты</RouterLink>
       <RouterLink class="header-nav__link" to="/reviews">Отзывы</RouterLink>
     </div>
     <div class="footer-social-nets">

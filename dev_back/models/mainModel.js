@@ -1,4 +1,4 @@
-const listArr = [
+const ourAdvantages = [
   "Наши ситтеры проверены, обучены и обожают животных",
   "Ваши любимцы не останутся без присмотра",
   "Заключаем с вами договор, где прописаны все обязанности ситтера",
@@ -16,4 +16,4 @@ const howWeWorkList = [
   "Заключительная встреча для возврата питомца, ключей и др."
 ]
 
-module.exports = {listArr, howWeWorkList};
+module.exports = {ourAdvantages, howWeWorkList};

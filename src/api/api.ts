@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 export async function apiCall() {
   try {
     const response = await axios({

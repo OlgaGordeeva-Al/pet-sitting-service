@@ -2,7 +2,7 @@
 import { sitters } from "../model/sittersModel";
 
 import SittersCard from "../components/UI/SitterCard.vue";
-import TextHeader from "@/components/UI/TextHeader.vue";
+import TextHeader from "../components/UI/TextHeader.vue";
 </script>
 
 <template>

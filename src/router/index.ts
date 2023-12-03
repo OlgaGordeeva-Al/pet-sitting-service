@@ -12,32 +12,32 @@ const router = createRouter({
     {
       path: '/sitters',
       name: 'sitters',
-      component: () => import('../views/SittersView.vue')
+      component: () => import('../pages/Sitters.vue')
     },
     {
       path: '/contacts',
       name: 'contacts',
-      component: () => import('../views/ContactsView.vue')
+      component: () => import('../pages/Contacts.vue')
     },
     {
       path: '/services',
       name: 'services',
-      component: () => import('../views/ServicesView.vue'),
+      component: () => import('../pages/Services.vue'),
     },
     {
       path: '/services/:service',
       name: 'service',
-      component: () => import('../views/Service.vue'),
+      component: () => import('../pages/Service.vue'),
     },
     {
       path: '/reviews',
       name: 'reviews',
-      component: () => import('../views/ReviewsView.vue')
+      component: () => import('../pages/Reviews.vue')
     },
     {
       path: '/:pathMatch(.*)*',
       name: 'NotFound',
-      component: () => import('../views/NotFound.vue') 
+      component: () => import('../pages/NotFound.vue') 
     }
 
   ]
