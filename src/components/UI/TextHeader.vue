@@ -10,8 +10,12 @@
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .text-h1 {
-  color: var(--secondary-purple)
+  color: var(--secondary-purple);
+
+  h1 {
+    margin-top: 0;
+  }
 }
 </style>

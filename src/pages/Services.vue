@@ -32,7 +32,6 @@
 
 <style scoped lang="scss">
   .services {
-    margin-top: 0;
 
     &__card-block {
       display: grid;

@@ -1,9 +1,34 @@
+<script lang="ts" setup>
+import ReviewCard from "../components/UI/ReviewCard.vue";
+import TextHeader from "@/components/UI/TextHeader.vue";
+
+import { clientReviews } from "../model/reviews";
+</script>
+
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="reviews main-block">
+    <TextHeader class="reviews-header" header="Ваши отзывы" />
+    <div class="reviews-block">
+      <ReviewCard 
+        v-for="item in clientReviews" 
+        :name="item.name"
+        :image="item.image"
+        :reviewText="item.reviewText"
+        :stars="item.stars"
+        :key="item.name"
+      />
+    </div>
   </div>
 </template>
 
-<style>
-
+<style lang="scss" scoped>
+  .reviews-header {
+    margin: auto;
+    margin-top: 0;
+  }
+  .reviews-block {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+    grid-gap: 30px;
+  }
 </style>
