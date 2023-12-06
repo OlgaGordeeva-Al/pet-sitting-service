@@ -12,23 +12,23 @@
     <form @submit.prevent="submitData">
       <div class="form-control">
         <label for="name">Ваше имя</label>
-        <input id="name" name="name" type="text" ref="nameInput" />
+        <input id="name" name="name" type="text" v-model="nameInput" />
       </div>
 
       <div class="form-control">
         <label> Выберите услугу/услуги</label>
         <div class="checkbox">
-          <input class="checkbox-input" type="checkbox" id="walking" value="walking" ref="serviceInput" />
+          <input class="checkbox-input" type="checkbox" id="walking" value="walking" v-model="serviceInput" />
           <span>Выгул</span>
         </div>
 
         <div class="checkbox">
-          <input class="checkbox-input" type="checkbox" value="sitting" ref="serviceInput" />
+          <input class="checkbox-input" type="checkbox" value="sitting" v-model="serviceInput" />
           <span>Приходящая няня</span>
         </div>
 
         <div class="checkbox">
-          <input class="checkbox-input" type="checkbox" value="keeping" ref="serviceInput">
+          <input class="checkbox-input" type="checkbox" value="keeping" v-model="serviceInput">
           <span>Передержка</span>
         </div>
       </div>
@@ -47,7 +47,7 @@
       </div>
       <div class="button-control">
         <ButtonSecondary type="submit" style="width: 40%;" class="form-button" @click="$emit('close')" title="Отправить заявку" />
-        <ButtonSecondary style="width: 40%; background-color: var(--primary-purple);" class="form-button" @click="$emit('close'), submitData" title="Отмена" />
+        <ButtonSecondary style="width: 40%; background-color: var(--primary-purple);" class="form-button" @click="submitData, $emit('close')" title="Отмена" />
       </div>
     </form>
   </div>
@@ -58,35 +58,31 @@ import { ref } from 'vue';
 import ButtonSecondary from './UI/ButtonSecondary.vue';
 
 const nameInput = ref(null);
+const addresInput = ref(null);
+const aboutInput = ref(null);
+const phoneInput = ref(null);
+const serviceInput = ref([]);
+let inputIsInvalid = ref(false);
 
-// export default {
-//   data() {
-//     return {
-//       inputIsInvalid: false,
-//     };
-//   },
-//   methods: {
-//     submitData() {
-//       const enteredTitle = this.$refs.titleInput.value;
-//       const enteredDescription = this.$refs.descInput.value;
-//       const enteredUrl = this.$refs.linkInput.value;
+function submitData () {
+  const enteredName = nameInput.value;
+  const enteredAbout = aboutInput.value;
+  const enteredPhone = phoneInput.value;
 
-//       if (
-//         enteredTitle.trim() === '' ||
-//         enteredDescription.trim() === '' ||
-//         enteredUrl.trim() === ''
-//       ) {
-//         this.inputIsInvalid = true;
-//         return;
-//       }
+  if (
+    enteredName.trim() === '' ||
+    enteredAbout.trim() === '' ||
+    enteredPhone.trim() === ''
+  ) {
+    inputIsInvalid.value = true;
+    return;
+  }
+}
 
-//       this.addResource(enteredTitle, enteredDescription, enteredUrl);
-//     },
-//     confirmError() {
-//       this.inputIsInvalid = false;
-//     }
-//   },
-// };
+ function confirmError() {
+  inputIsInvalid.value = false;
+ }
+
 </script>
 
 <style lang="scss" scoped>
