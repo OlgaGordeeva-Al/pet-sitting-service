@@ -3,6 +3,8 @@
     svg?: string,
     title?: string,
   }>()
+
+  defineEmits(['close'])
 </script>
 
 <template>

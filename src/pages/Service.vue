@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import TextHeader from '../components/UI/TextHeader.vue';
-import ButtonSecondary from '../components/UI/ButtonSecondary.vue';
-import { servicesData } from '../model/serviceModel'
+  import TextHeader from '../components/UI/TextHeader.vue';
+  import ButtonSecondary from '../components/UI/ButtonSecondary.vue';
+  import { servicesData } from '../model/serviceModel';
+  import BaseModal from "@/components/BaseModal.vue";
+  import OrderForm from "@/components/OrderForm.vue";
 
-import {useRoute} from "vue-router";
+  import {useRoute} from "vue-router";
+  import { ref } from 'vue'
+
   const route = useRoute();
   const ser = route.params.service;
 
@@ -19,6 +23,8 @@ import {useRoute} from "vue-router";
 
   const {header, description, servicesList, imgSrc} = data
 
+  const showModal = ref(false);
+
 </script>
 
 <template>
@@ -33,7 +39,17 @@ import {useRoute} from "vue-router";
         </li>
       </ul>
       <div class="service-text__button-block">
-        <ButtonSecondary class="ervice-text__button" title="Заказать услугу" />
+        <ButtonSecondary @click="showModal = true" class="ervice-text__button" title="Заказать услугу" />
+        <Teleport to="body">
+        <BaseModal :show="showModal" @close="showModal = false">
+        <template #header>
+          <h3>Заявка на услугу</h3>
+        </template>
+        <template #body>
+          <OrderForm @close="showModal = false" />
+        </template>
+        </BaseModal>
+      </Teleport>
         <RouterLink class="service-text__link" to="/services"> Назад &#x2192</RouterLink>
       </div>
     </div>

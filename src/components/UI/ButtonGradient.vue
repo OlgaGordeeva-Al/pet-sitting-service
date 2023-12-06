@@ -6,7 +6,7 @@
 </script>
 
 <template>
-  <button class="gradient-button">{{ title }}</button>
+  <button type="button" class="gradient-button">{{ title }}</button>
 </template>
 
 <style lang="scss" scoped>
@@ -21,6 +21,7 @@
 
     &:hover {
       transform: scale(1.1);
+      cursor: pointer;
     }
   }
 </style>
