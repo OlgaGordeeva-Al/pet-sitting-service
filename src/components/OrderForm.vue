@@ -1,78 +1,33 @@
-<template>
-  <!-- <base-dialog v-if="inputIsInvalid" title="Invalid Input" @close="confirmError">
-    <template #default>
-      <p>Что-то пошло не так</p>
-      <p>Проверьте правильность заполненных полей</p>
-    </template>
-    <template #actions>
-      <base-button @click="confirmError">ОК</base-button>
-    </template>
-  </base-dialog> -->
-  <div class="form">
-    <form @submit.prevent="submitData">
-      <div class="form-control">
-        <label for="name">Ваше имя</label>
-        <input id="name" name="name" type="text" v-model="nameInput" />
-      </div>
-
-      <div class="form-control">
-        <label> Выберите услугу/услуги</label>
-        <div class="checkbox">
-          <input class="checkbox-input" type="checkbox" id="walking" value="walking" v-model="serviceInput" />
-          <span>Выгул</span>
-        </div>
-
-        <div class="checkbox">
-          <input class="checkbox-input" type="checkbox" value="sitting" v-model="serviceInput" />
-          <span>Приходящая няня</span>
-        </div>
-
-        <div class="checkbox">
-          <input class="checkbox-input" type="checkbox" value="keeping" v-model="serviceInput">
-          <span>Передержка</span>
-        </div>
-      </div>
-
-      <div class="form-control">
-        <label for="addres">Ваш адрес</label>
-        <input id="addres" name="addres" type="text" ref="addresInput" />
-      </div>
-      <div class="form-control">
-        <label for="addres">Контактный телефон</label>
-        <input id="addres" name="phone" type="text" ref="phoneInput" />
-      </div>
-      <div class="form-control">
-        <label for="about">Подробности</label>
-        <textarea placeholder="Напишите о вашем животном или животных подробнее, а также что нам предстоит делать" id="link" rows="3" name="link" type="url" ref="aboutInput"></textarea> 
-      </div>
-      <div class="button-control">
-        <ButtonSecondary type="submit" style="width: 40%;" class="form-button" @click="$emit('close')" title="Отправить заявку" />
-        <ButtonSecondary style="width: 40%; background-color: var(--primary-purple);" class="form-button" @click="submitData, $emit('close')" title="Отмена" />
-      </div>
-    </form>
-  </div>
-</template>
-
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, reactive } from 'vue';
 import ButtonSecondary from './UI/ButtonSecondary.vue';
+import BaseModal from './BaseModal.vue';
 
-const nameInput = ref(null);
-const addresInput = ref(null);
-const aboutInput = ref(null);
-const phoneInput = ref(null);
-const serviceInput = ref([]);
+interface FormData {
+  nameInput: string;
+  addresInput?: string;
+  aboutInput?: string;
+  phoneInput: string;
+  serviceInput?: string[];
+}
+
+const formValues = reactive<FormData>({
+  nameInput: "",
+  addresInput: "",
+  aboutInput: "",
+  phoneInput: "",
+  serviceInput: []
+})
+
 let inputIsInvalid = ref(false);
 
 function submitData () {
-  const enteredName = nameInput.value;
-  const enteredAbout = aboutInput.value;
-  const enteredPhone = phoneInput.value;
+  const formResuts = {...formValues};
+
+  const applValues = Object.values(formResuts);
 
   if (
-    enteredName.trim() === '' ||
-    enteredAbout.trim() === '' ||
-    enteredPhone.trim() === ''
+    !applValues.length
   ) {
     inputIsInvalid.value = true;
     return;
@@ -84,6 +39,61 @@ function submitData () {
  }
 
 </script>
+
+<template>
+  <!-- <BaseModal :show="inputIsInvalid">
+    <template #default>
+      <p>Что-то пошло не так</p>
+      <p>Проверьте правильность заполненных полей</p>
+    </template>
+    <template #actions>
+      <button @click="confirmError, $emit('close')">ОК</button>
+    </template>
+  </BaseModal> -->
+  <div class="form">
+    <form @submit.prevent="submitData">
+      <div class="form-control">
+        <label for="name">Ваше имя</label>
+        <input placeholder="Как к вам обращаться" id="name" name="name" type="text" v-model="formValues.nameInput" />
+      </div>
+
+      <div class="form-control">
+        <label> Выберите услугу/услуги</label>
+        <div class="checkbox">
+          <input class="checkbox-input" type="checkbox" id="walking" value="walking" v-model="formValues.serviceInput" />
+          <span>Выгул</span>
+        </div>
+
+        <div class="checkbox">
+          <input class="checkbox-input" type="checkbox" value="sitting" v-model="formValues.serviceInput" />
+          <span>Приходящая няня</span>
+        </div>
+
+        <div class="checkbox">
+          <input class="checkbox-input" type="checkbox" value="keeping" v-model="formValues.serviceInput">
+          <span>Передержка</span>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <label for="addres">Ваш адрес</label>
+        <input placeholder="Укажите улицу и дом для удобства подбора няни" v-model="formValues.addresInput" id="addres" name="addres" type="text" ref="addresInput" />
+      </div>
+      <div class="form-control">
+        <label for="phone">Контактный телефон</label>
+        <input placeholder="Мы перезвоним Вам по этому номеру" v-model="formValues.phoneInput" id="addres" name="phone" type="text" ref="phoneInput" />
+      </div>
+      <div class="form-control">
+        <label for="about">Подробности</label>
+        <textarea placeholder="Напишите о вашем животном или животных подробнее, а также что нам предстоит делать" id="link" rows="3" name="link" type="url"  v-model="formValues.aboutInput"></textarea> 
+      </div>
+      <div class="button-control">
+        <ButtonSecondary type="submit" style="width: 40%;" class="form-button" @click="$emit('close')" title="Отправить заявку" />
+        <ButtonSecondary style="width: 40%; background-color: var(--primary-purple);" class="form-button" @click="submitData, $emit('close')" title="Отмена" />
+      </div>
+    </form>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .form {
