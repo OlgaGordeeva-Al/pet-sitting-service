@@ -2,8 +2,9 @@
 import { ref, reactive } from 'vue';
 import ButtonSecondary from './UI/ButtonSecondary.vue';
 import BaseModal from './BaseModal.vue';
+import {requestFunction} from "../api/api"
 
-interface FormData {
+export interface FormData {
   nameInput: string;
   addresInput?: string;
   aboutInput?: string;
@@ -21,10 +22,14 @@ const formValues = reactive<FormData>({
 
 let inputIsInvalid = ref(false);
 
+
+
 function submitData () {
   const formResuts = {...formValues};
 
   const applValues = Object.values(formResuts);
+
+  requestFunction('post', "/services/new-application", formResuts);
 
   if (
     !applValues.length
