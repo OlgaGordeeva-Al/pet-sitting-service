@@ -2,7 +2,7 @@
   defineProps<{
     svg?: string,
     header?: string,
-    description: string
+    description?: string
     index: number
   }>()
 </script>

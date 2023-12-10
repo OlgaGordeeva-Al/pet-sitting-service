@@ -1,4 +1,4 @@
-export const clientReviews = [
+const clientReviews = [
   {
     name: "Анастасия",
     image: "src/assets/svg/undraw_beach_day_cser.svg",
@@ -24,3 +24,5 @@ export const clientReviews = [
     stars: 3
   },
 ]
+
+module.exports = { clientReviews };

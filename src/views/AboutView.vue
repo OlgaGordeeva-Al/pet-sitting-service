@@ -6,26 +6,19 @@
   import ButtonGradient from "@/components/UI/ButtonGradient.vue";
   import BaseModal from "@/components/BaseModal.vue";
   import OrderForm from "@/components/OrderForm.vue";
+  import { requestFunction } from '@/api/api';
 
-    const listArr = [
-      "Наши ситтеры проверены, обучены и обожают животных",
-      "Ваши любимцы не останутся без присмотра",
-      "Заключаем с вами договор, где прописаны все обязанности ситтера",
-      "Гуляем только на поводке, учитываем особенности каждого животного",
-      "Фото и видеоотчеты при каждом визите ситтера и с каждой прогулки",
-      "Мы предоставляем возможность круглосуточного видеонаблюдения за вашими питомцами"
-    ];
+  const advantages = ref([]);
+  const howTo = ref([]);
 
-    const howWeWorkList = [
-      "Вы оставляете заявку на сайте",
-      "Выбираете ситтера из списка откликнувшихся ситтеров или выгульщиков",
-      "Заключаем договор, вы производите оплату за весь пакет услуг",
-      "В удобное для вас время ситтер приезжает к вам бесплатно, знакомится с вашим питомцем или питомцами",
-      "Передержка/ Выгул / Уход няни за питомцем",
-      "Заключительная встреча для возврата питомца, ключей и др."
-    ];
+  const requestedData = () =>  requestFunction("get", "/").then((resp) => {
+    advantages.value = resp.ourAdvantages;
+    howTo.value = resp.howWeWorkList;
+  } );
 
-    const showModal = ref(false);
+  requestedData();
+
+  const showModal = ref(false);
 </script>
 
 <template>
@@ -64,13 +57,13 @@
   <div class="about-advantages main-block">
     <TextHeader class="about-advantages__header block-header" header="Почему именно мы?" />
     <div class="about-advantages__list">
-      <SvgListItem v-for="(item, index) in listArr" svg="src\assets\svg\paw-3-svgrepo-com.svg" :index="index" :description="listArr[index]" :key="index" />
+      <SvgListItem v-for="(item, index) in advantages" svg="src\assets\svg\paw-3-svgrepo-com.svg" :index="index" :description="advantages[index]" :key="index" />
     </div>
   </div>
   <div class="about-how main-block">
     <TextHeader class="about-how__header block-header" header="Как мы работаем" />
     <div class="about-how__list">
-      <SvgListItem v-for="(item, index) in howWeWorkList" class="about-how__list-item" :index="index" :description="howWeWorkList[index]" :key="howWeWorkList[index]" />
+      <SvgListItem v-for="(item, index) in howTo" class="about-how__list-item" :index="index" :description="howTo[index]" :key="howTo[index]" />
     </div>
   </div>
 </template>

@@ -2,7 +2,16 @@
 import ReviewCard from "../components/UI/ReviewCard.vue";
 import TextHeader from "@/components/UI/TextHeader.vue";
 
-import { clientReviews } from "../model/reviews";
+import { requestFunction } from '@/api/api';
+import { ref } from "vue";
+
+const clientReviews = ref([]);
+
+const requestedData = () =>  requestFunction("get", "/reviews/").then((resp) => {
+  clientReviews.value = resp;
+} );
+
+requestedData();
 </script>
 
 <template>

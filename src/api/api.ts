@@ -16,8 +16,8 @@ export async function requestFunction(method: string, url: string, data?: Data )
       headers: {
         'Content-Type': 'application/json'
       }
-    });
-    console.log(response);
+    }
+    );
     return response.data;
   } catch (error) {
     console.error(error);

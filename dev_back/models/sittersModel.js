@@ -1,4 +1,4 @@
-export const sitters = [
+const sittersArr = [
   {
     imageSrc: "https://plus.unsplash.com/premium_photo-1664285640352-80f8d258d78b?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzQ5fHxwZXR8ZW58MHx8MHx8fDA%3D",
     name: "Анна",
@@ -48,3 +48,5 @@ export const sitters = [
     spec: "Няня, передержка, выгул",
   },
 ]
+
+module.exports = { sittersArr };
