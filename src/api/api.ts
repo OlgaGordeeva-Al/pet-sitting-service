@@ -5,7 +5,11 @@ interface Data extends FormData {
   
 }
 
-export async function requestFunction(method: string, url: string, data?: Data ) {
+export interface QueryParams {
+  routeName: string;
+}
+
+export async function requestFunction(method: string, url: string, data?: Data | string, queryParams?: QueryParams ) {
   const reqData = JSON.stringify(data);
 
   try {
@@ -13,6 +17,7 @@ export async function requestFunction(method: string, url: string, data?: Data )
       method: method,
       url: `/api${url}`,
       data: reqData,
+      params: queryParams,
       headers: {
         'Content-Type': 'application/json'
       }

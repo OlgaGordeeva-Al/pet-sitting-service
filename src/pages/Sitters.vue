@@ -5,16 +5,7 @@ import SittersCard from "../components/UI/SitterCard.vue";
 import TextHeader from "../components/UI/TextHeader.vue";
 import { requestFunction } from '@/api/api';
 
-const sitters = ref([]);
-
-interface SittersArr {
-  imageSrc: string,
-    name: string,
-    about: string,
-    workTerm: number | string,
-    raiting: number,
-    spec: string,
-}
+const sitters = ref();
 
 const requestedData = () =>  requestFunction("get", "/sitters/").then((resp) => {
 sitters.value = resp;

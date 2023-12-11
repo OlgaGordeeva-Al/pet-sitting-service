@@ -1,15 +1,16 @@
 <script setup lang="ts">
   import TextHeader from '../components/UI/TextHeader.vue';
   import ButtonSecondary from '../components/UI/ButtonSecondary.vue';
-  import { servicesData } from '../model/serviceModel';
   import BaseModal from "@/components/BaseModal.vue";
   import OrderForm from "@/components/OrderForm.vue";
+  import { requestFunction } from '@/api/api';
+  import type { QueryParams } from '@/api/api';
 
-  import {useRoute} from "vue-router";
+  import { useRoute } from "vue-router";
   import { ref } from 'vue'
 
   const route = useRoute();
-  const ser = route.params.service;
+  const serviceName = { routeName: route.params.service };
 
   interface ServiceData {
     name: string;
@@ -18,23 +19,28 @@
     servicesList: string[],
     imgSrc: string;
   }
-
-  const data = servicesData.find(item => item.name === ser) as ServiceData;
-
-  const {header, description, servicesList, imgSrc} = data
-
+  
   const showModal = ref(false);
+  
+  const service = ref();
+  
+  const servicesData = () =>  requestFunction("get", "/services/", "", serviceName as QueryParams).then((resp) => {
+    service.value = resp;
+  });
+  
+  servicesData();
+  
 
 </script>
 
 <template>
   <div class="service main-block">
     <div class="service-text">
-      <TextHeader class="service-text__header" :header="header" />
-      <p class="service-text__description">{{ description }}</p>
+      <TextHeader class="service-text__header" :header="service.header" />
+      <p class="service-text__description">{{ service.description }}</p>
       <ul class="service-list">
         <p class="service-list__header">Что входит в услугу:</p>
-        <li v-for="item in servicesList" class="service-list__item" :key="item">
+        <li v-for="item in service.servicesList" class="service-list__item" :key="item">
           {{ item }}
         </li>
       </ul>
@@ -54,7 +60,7 @@
       </div>
     </div>
     <div class="service-image">
-      <img :src="imgSrc" :alt="header">
+      <img :src="service.imgSrc" :alt="service.header">
     </div>
   </div>
 </template>

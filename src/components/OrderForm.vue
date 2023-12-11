@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
+import { ref, reactive, computed } from 'vue';
 import ButtonSecondary from './UI/ButtonSecondary.vue';
 import BaseModal from './BaseModal.vue';
 import {requestFunction} from "../api/api"
@@ -18,9 +18,23 @@ const formValues = reactive<FormData>({
   aboutInput: "",
   phoneInput: "",
   serviceInput: []
-})
+});
+
+const validName = computed(() => formValues.nameInput.trim().length > 0);
 
 let inputIsInvalid = ref(false);
+let isValidPhoneNumber = ref(true);
+let isInvalidForm = computed(() => !validName || !isValidPhoneNumber);
+
+
+const validPhone = () =>  {
+  const validationRegex = /^\d{10}$/;
+  if (formValues.phoneInput.match(validationRegex) ||  formValues.phoneInput.trim().length <= 0) {
+    isValidPhoneNumber.value = false;
+  }
+}
+
+
 
 
 
@@ -86,14 +100,14 @@ function submitData () {
       </div>
       <div class="form-control">
         <label for="phone">Контактный телефон</label>
-        <input placeholder="Мы перезвоним Вам по этому номеру" v-model="formValues.phoneInput" id="addres" name="phone" type="text" ref="phoneInput" />
+        <input placeholder="Мы перезвоним Вам по этому номеру" @blur="validPhone" v-model="formValues.phoneInput" id="addres" name="phone" type="text" ref="phoneInput" />
       </div>
       <div class="form-control">
         <label for="about">Подробности</label>
         <textarea placeholder="Напишите о вашем животном или животных подробнее, а также что нам предстоит делать" id="link" rows="3" name="link" type="url"  v-model="formValues.aboutInput"></textarea> 
       </div>
       <div class="button-control">
-        <ButtonSecondary type="submit" style="width: 40%;" class="form-button" @click="$emit('close')" title="Отправить заявку" />
+        <ButtonSecondary type="submit" :disabled="isInvalidForm" style="width: 40%;" class="form-button" @click="$emit('close')" title="Отправить заявку" />
         <ButtonSecondary style="width: 40%; background-color: var(--primary-purple);" class="form-button" @click="submitData, $emit('close')" title="Отмена" />
       </div>
     </form>

@@ -5,7 +5,7 @@ import TextHeader from "@/components/UI/TextHeader.vue";
 import { requestFunction } from '@/api/api';
 import { ref } from "vue";
 
-const clientReviews = ref([]);
+const clientReviews = ref();
 
 const requestedData = () =>  requestFunction("get", "/reviews/").then((resp) => {
   clientReviews.value = resp;

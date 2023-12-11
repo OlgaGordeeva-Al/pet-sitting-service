@@ -11,8 +11,9 @@ router.post('/new-application', (req, res) => {
 
 
 router.get('/', (req, res) => {
-  console.log(res.message);
-  res.send(servicesData);
+  let page = req.query.routeName;
+  const data = servicesData.find(item => item.name === page);
+  res.send(data);
 })
 
 module.exports = router;
