@@ -2,13 +2,14 @@
   defineProps<{
     svg?: string,
     title?: string,
+    disabled?: boolean
   }>()
 
   defineEmits(['close'])
 </script>
 
 <template>
-  <button class="secondary-button">{{ title }}</button>
+  <button :disabled="disabled" :class="`secondary-button ${disabled ? 'button-disabled' : null}`">{{ title }}</button>
 </template>
 
 <style lang="scss" scoped>
@@ -24,5 +25,10 @@
       background-color: var(--primary-purple);
       cursor: pointer;
     }
+  }
+
+  .secondary-button.button-disabled {
+    opacity: 0.8;
+    pointer-events: none;
   }
 </style>

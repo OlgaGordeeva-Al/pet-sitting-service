@@ -30,17 +30,16 @@
   
   servicesData();
   
-
 </script>
 
 <template>
   <div class="service main-block">
     <div class="service-text">
-      <TextHeader class="service-text__header" :header="service.header" />
-      <p class="service-text__description">{{ service.description }}</p>
+      <TextHeader class="service-text__header" :header="service?.header" />
+      <p class="service-text__description">{{ service?.description }}</p>
       <ul class="service-list">
         <p class="service-list__header">Что входит в услугу:</p>
-        <li v-for="item in service.servicesList" class="service-list__item" :key="item">
+        <li v-for="item in service?.servicesList" class="service-list__item" :key="item">
           {{ item }}
         </li>
       </ul>
@@ -60,7 +59,7 @@
       </div>
     </div>
     <div class="service-image">
-      <img :src="service.imgSrc" :alt="service.header">
+      <img :src="service?.imgSrc" :alt="service?.header">
     </div>
   </div>
 </template>

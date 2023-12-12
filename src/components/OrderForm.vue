@@ -20,22 +20,18 @@ const formValues = reactive<FormData>({
   serviceInput: []
 });
 
-const validName = computed(() => formValues.nameInput.trim().length > 0);
-
-let inputIsInvalid = ref(false);
 let isValidPhoneNumber = ref(true);
-let isInvalidForm = computed(() => !validName || !isValidPhoneNumber);
+let isValidName = ref(true);
+let isInvalidForm = computed(() => !isValidName  || !isValidPhoneNumber || !formValues.nameInput || !formValues.phoneInput);
 
 
 const validPhone = () =>  {
-  const validationRegex = /^\d{10}$/;
-  if (formValues.phoneInput.match(validationRegex) ||  formValues.phoneInput.trim().length <= 0) {
-    isValidPhoneNumber.value = false;
-  }
+  formValues.phoneInput.trim().length > 0 ? isValidPhoneNumber.value = true : isValidPhoneNumber.value = false;
 }
 
-
-
+const validName = () => {
+  formValues.nameInput.trim().length > 0 ? isValidName.value = true : isValidName.value = false;
+}
 
 
 function submitData () {
@@ -45,17 +41,17 @@ function submitData () {
 
   requestFunction('post', "/services/new-application", formResuts);
 
-  if (
-    !applValues.length
-  ) {
-    inputIsInvalid.value = true;
-    return;
-  }
+  // if (
+  //   !applValues.length
+  // ) {
+  //   inputIsInvalid.value = true;
+  //   return;
+  // }
 }
 
- function confirmError() {
-  inputIsInvalid.value = false;
- }
+//  function confirmError() {
+//   inputIsInvalid.value = false;
+//  }
 
 </script>
 
@@ -73,13 +69,14 @@ function submitData () {
     <form @submit.prevent="submitData">
       <div class="form-control">
         <label for="name">Ваше имя</label>
-        <input placeholder="Как к вам обращаться" id="name" name="name" type="text" v-model="formValues.nameInput" />
+        <input :class="`${!isValidName ? 'input-error' : null}`" placeholder="Как к вам обращаться" id="name" name="name" type="text" v-model="formValues.nameInput" @blur="validName" />
+        <div class="error-message" v-if="!isValidName">Введите, пожалуйста, ваше имя</div>
       </div>
 
       <div class="form-control">
         <label> Выберите услугу/услуги</label>
         <div class="checkbox">
-          <input class="checkbox-input" type="checkbox" id="walking" value="walking" v-model="formValues.serviceInput" />
+          <input class="checkbox-input" type="checkbox" id="walking" value="walking" v-model="formValues.serviceInput"/>
           <span>Выгул</span>
         </div>
 
@@ -100,7 +97,8 @@ function submitData () {
       </div>
       <div class="form-control">
         <label for="phone">Контактный телефон</label>
-        <input placeholder="Мы перезвоним Вам по этому номеру" @blur="validPhone" v-model="formValues.phoneInput" id="addres" name="phone" type="text" ref="phoneInput" />
+        <input :class="`${!isValidPhoneNumber ? 'input-error' : null}`" placeholder="Мы перезвоним Вам по этому номеру" @blur="validPhone" v-model="formValues.phoneInput" id="addres" name="phone" type="text" ref="phoneInput" />
+        <div class="error-message" v-if="!isValidPhoneNumber">Мы не сможем связаться с вами без номера телефона</div>
       </div>
       <div class="form-control">
         <label for="about">Подробности</label>
@@ -156,6 +154,16 @@ textarea:focus {
 
 .form-control {
   margin: 1rem 0;
+
+  .input-error {
+    border-color: red;
+    background-color: rgba(255, 0, 0, 0.075);
+  }
+
+  .error-message {
+    font-size: 14px;
+    color: red;
+  }
 }
 
 .button-control {
