@@ -25,8 +25,8 @@ export async function requestFunction(method: string, url: string, data?: Data |
     );
     return response.data;
   } catch (error) {
-    console.error(error);
-    return error;
+    const errorMessage = {reqError: error.message}
+    return errorMessage;
   }
 }
 

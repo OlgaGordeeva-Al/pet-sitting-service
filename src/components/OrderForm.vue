@@ -12,6 +12,18 @@ export interface FormData {
   serviceInput?: string[];
 }
 
+interface modalData {
+  header: string,
+  message: string
+}
+
+
+const requestModalData = reactive<modalData>({
+  header: "Что-то пошло не так",
+  message: "Попробуйте отправить заявку еще раз или вернитесь позже"
+})
+
+
 const formValues = reactive<FormData>({
   nameInput: "",
   addresInput: "",
@@ -20,10 +32,12 @@ const formValues = reactive<FormData>({
   serviceInput: []
 });
 
+const emit = defineEmits(['close']);
+
 let isValidPhoneNumber = ref(true);
 let isValidName = ref(true);
 let isInvalidForm = computed(() => !isValidName  || !isValidPhoneNumber || !formValues.nameInput || !formValues.phoneInput);
-
+let reqIsCompleted = ref(false);
 
 const validPhone = () =>  {
   formValues.phoneInput.trim().length > 0 ? isValidPhoneNumber.value = true : isValidPhoneNumber.value = false;
@@ -36,35 +50,33 @@ const validName = () => {
 
 function submitData () {
   const formResuts = {...formValues};
-
-  const applValues = Object.values(formResuts);
-
-  requestFunction('post', "/services/new-application", formResuts);
-
-  // if (
-  //   !applValues.length
-  // ) {
-  //   inputIsInvalid.value = true;
-  //   return;
-  // }
+  
+  const result = requestFunction('post', "/services/new-applicatio", formResuts).then(
+    (resp) => {
+      reqIsCompleted.value = true;
+      if (!resp.reqError) {
+          requestModalData.header = "Спасибо",
+          requestModalData.message = "Наш менеджен скоро свяжется с Вами"
+          emit('close');
+      }
+    }
+  );
 }
-
-//  function confirmError() {
-//   inputIsInvalid.value = false;
-//  }
 
 </script>
 
 <template>
-  <!-- <BaseModal :show="inputIsInvalid">
-    <template #default>
-      <p>Что-то пошло не так</p>
-      <p>Проверьте правильность заполненных полей</p>
+  <BaseModal :show="reqIsCompleted">
+    <template #header>
+      <p>{{ requestModalData.header }}</p>
     </template>
-    <template #actions>
-      <button @click="confirmError, $emit('close')">ОК</button>
+    <template #body>
+      <p>{{ requestModalData.message }}</p>
     </template>
-  </BaseModal> -->
+    <template #footer>
+      <button @click="reqIsCompleted = false">ОК</button>
+    </template>
+  </BaseModal>
   <div class="form">
     <form @submit.prevent="submitData">
       <div class="form-control">
@@ -105,8 +117,8 @@ function submitData () {
         <textarea placeholder="Напишите о вашем животном или животных подробнее, а также что нам предстоит делать" id="link" rows="3" name="link" type="url"  v-model="formValues.aboutInput"></textarea> 
       </div>
       <div class="button-control">
-        <ButtonSecondary type="submit" :disabled="isInvalidForm" style="width: 40%;" class="form-button" @click="$emit('close')" title="Отправить заявку" />
-        <ButtonSecondary style="width: 40%; background-color: var(--primary-purple);" class="form-button" @click="submitData, $emit('close')" title="Отмена" />
+        <ButtonSecondary type="submit" @click="submitData" :disabled="isInvalidForm" style="width: 40%;" class="form-button" title="Отправить заявку" />
+        <ButtonSecondary style="width: 40%; background-color: var(--primary-purple);" class="form-button" @click="$emit('close')" title="Отмена" />
       </div>
     </form>
   </div>
