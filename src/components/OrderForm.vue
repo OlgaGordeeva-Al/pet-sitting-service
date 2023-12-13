@@ -14,13 +14,15 @@ export interface FormData {
 
 interface modalData {
   header: string,
-  message: string
+  message: string,
+  requestSuccess: boolean
 }
 
 
 const requestModalData = reactive<modalData>({
   header: "Что-то пошло не так",
-  message: "Попробуйте отправить заявку еще раз или вернитесь позже"
+  message: "Попробуйте отправить заявку еще раз или вернитесь позже",
+  requestSuccess: false
 })
 
 
@@ -51,13 +53,13 @@ const validName = () => {
 function submitData () {
   const formResuts = {...formValues};
   
-  const result = requestFunction('post', "/services/new-applicatio", formResuts).then(
+  requestFunction('post', "/services/new-application", formResuts).then(
     (resp) => {
       reqIsCompleted.value = true;
       if (!resp.reqError) {
+          requestModalData.requestSuccess = true,
           requestModalData.header = "Спасибо",
           requestModalData.message = "Наш менеджен скоро свяжется с Вами"
-          emit('close');
       }
     }
   );
@@ -74,7 +76,7 @@ function submitData () {
       <p>{{ requestModalData.message }}</p>
     </template>
     <template #footer>
-      <button @click="reqIsCompleted = false">ОК</button>
+      <ButtonSecondary  @click="reqIsCompleted = false; requestModalData.requestSuccess ? $emit('close') : null"  style="width: 40%;" class="form-button" title="Понятненько" />
     </template>
   </BaseModal>
   <div class="form">
