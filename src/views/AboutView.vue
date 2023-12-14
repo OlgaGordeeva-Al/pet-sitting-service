@@ -26,14 +26,14 @@
     <div class="about-banner__text">
       <TextHeader class="about-banner__header" header="Передержка, выгул, ситтинг для ваших питомцев" />
       <p>Заботимся о ваших любимцах, как о своих 💜 </p>
-      <ButtonGradient id="show-modal" @click="showModal = true" class="about-banner__button" title="Оставить заявку" />
+      <ButtonGradient @click="showModal = true" class="about-banner__button" title="Оставить заявку" />
       <Teleport to="body">
         <BaseModal :show="showModal" @close="showModal = false">
         <template #header>
-          <h3>custom header</h3>
+          <h3 style="margin: 0">Заявка на услугу</h3>
         </template>
         <template #body>
-          <OrderForm />
+          <OrderForm @close="showModal = false" />
         </template>
         </BaseModal>
       </Teleport>
@@ -83,23 +83,22 @@
 
 <style lang="scss" scoped>
   .about-banner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    
     &__text {
-      position: absolute;
-
+      width: 200%;
       p {
         font-size: 20px;
       }
     }
 
-    &__header {
-      width: 90%;
+    &__button {
+      z-index: 100;
     }
 
-    &__image {
-      position: relative;
-      display: flex;
-      justify-content: flex-end;
-      height: 60vh;
+    &__header {
+      width: 90%;
     }
   }
 
