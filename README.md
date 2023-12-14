@@ -1,4 +1,4 @@
-# pet-sitting-servse
+# pet-sitting-servise
 
 Сайт SPA сервиса выгула и ситтинга для питомцев.
 
