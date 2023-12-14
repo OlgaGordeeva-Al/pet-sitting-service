@@ -26,7 +26,7 @@ defineProps<{
   </Transition>
 </template>
 
-<style>
+<style scoped lang="scss">
 .modal-mask {
   position: fixed;
   z-index: 9998;
@@ -49,12 +49,30 @@ defineProps<{
   transition: all 0.3s ease;
   max-height: 90vh;
   overflow: scroll;
+  overflow-x: hidden;  
+
+  &::-webkit-scrollbar-track
+  {
+    background-color: #fff;
+  }
+
+  &::-webkit-scrollbar
+  {
+    width: 10px;
+    background-color: #fff;
+  }
+
+  &::-webkit-scrollbar-thumb
+  {
+    border-radius: 2px;
+    background-color: #1f1f1f5c
+  }
 }
 
-.modal-header h3 {
-  color: var(--blue);
+.modal-header {
   margin-bottom: 0;
-  margin-top: 0;
+  margin-top: 20px;
+  color: var(--blue);
 }
 
 .modal-body {

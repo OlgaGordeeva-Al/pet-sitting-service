@@ -48,7 +48,7 @@
         <Teleport to="body">
         <BaseModal :show="showModal" @close="showModal = false">
         <template #header>
-          <h3>Заявка на услугу</h3>
+          <h3 style="margin: 0">Заявка на услугу</h3>
         </template>
         <template #body>
           <OrderForm @close="showModal = false" />

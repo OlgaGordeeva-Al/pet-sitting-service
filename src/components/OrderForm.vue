@@ -76,7 +76,7 @@ function submitData () {
       <p>{{ requestModalData.message }}</p>
     </template>
     <template #footer>
-      <ButtonSecondary  @click="reqIsCompleted = false; requestModalData.requestSuccess ? $emit('close') : null"  style="width: 40%;" class="form-button" title="Понятненько" />
+      <ButtonSecondary  @click="reqIsCompleted = false; requestModalData.requestSuccess ? $emit('close') : null"  style="width: 100%;" class="form-button" title="Понятненько" />
     </template>
   </BaseModal>
   <div class="form">
@@ -125,6 +125,7 @@ function submitData () {
     </form>
   </div>
 </template>
+
 
 <style lang="scss" scoped>
 .form {
