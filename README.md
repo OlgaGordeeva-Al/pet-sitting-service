@@ -1,14 +1,14 @@
 # pet-sitting-servse
 
-Сайт SPA сервиса выгула и ситтинга для питомцев. 
-
-Находится в разработке
+Сайт SPA сервиса выгула и ситтинга для питомцев.
 
 # Используются 
 
- - Vue
+ - Vue 3 composition api
  - TypeScript
  - Scss
+ - nodeJS
+ - Express
 
 # Установка
 
